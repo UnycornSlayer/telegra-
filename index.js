@@ -9,7 +9,7 @@ bot.onText(/\/movie (.+)/, function(msg,match) {
     var chatId = msg.chat.id;
     request(`http://www.omdbapi.com/?apikey=26d05975&t=${movie}`,function(error, response, body){ 
         if(!error && response.statusCode == 200){
-            bot.sendMessage(chatId, `_Tou a procurar o filme ${movie} Sarinha 🖤_`, {parse_mode:'Markdown'})
+            bot.sendMessage(chatId, `_Tou a procurar o filme ${movie}_`, {parse_mode:'Markdown'})
             .then(function(mgs){
                 var res = JSON.parse(body);
                 bot.sendPhoto(chatId, res.Poster,{caption: 'TITLE: ' + res.Title + '\nYEAR: ' + res.Year + '\nRATED: ' + res.Rated + '\nRELEASED: ' + res.Released + '\nRUNTIME: ' + res.Runtime + '\nGENRE: ' + res.Genre + '\nDIRECTOR: ' + res.Director + '\nACTORS: ' + res.Actors + '\nWEBSITE: ' + res.Website + '\n\nPLOT: ' + res.Plot }, {parse_mode:'Markdown'})
